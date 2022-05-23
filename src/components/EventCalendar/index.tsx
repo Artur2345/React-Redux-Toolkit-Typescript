@@ -4,7 +4,7 @@ import { EventCalendarProps } from './types';
 import { Moment } from 'moment';
 import { formatDate } from '../../utils/date';
 
-const Index: FC<EventCalendarProps> = ({ events }) => {
+const EventCalendar: FC<EventCalendarProps> = ({ events }) => {
   const dateCellRender = (date: Moment) => {
     const formattedDate = formatDate(date.toDate());
     // console.log(formattedDate);
@@ -26,4 +26,4 @@ const Index: FC<EventCalendarProps> = ({ events }) => {
   );
 };
 
-export default Index;
+export default EventCalendar;

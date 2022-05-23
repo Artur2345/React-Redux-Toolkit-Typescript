@@ -10,7 +10,7 @@ import {
 } from '../../routes';
 import { useTypedSelector } from '../../hooks';
 
-const Index = () => {
+const AppRouter = () => {
   const { isAuth } = useTypedSelector((state) => state.auth);
 
   return (isAuth || localStorage.getItem('auth') ? (
@@ -45,4 +45,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default AppRouter;

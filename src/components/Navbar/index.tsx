@@ -6,7 +6,7 @@ import { useTypedSelector, useActions } from "../../hooks";
 import { ItemType } from 'antd/lib/menu/hooks/useItems';
 import login from '../../pages/Login';
 
-const Index: FC = () => {
+const Navbar: FC = () => {
   const navigate = useNavigate();
   const { isAuth, user } = useTypedSelector((state) => state.auth);
   const { logout } = useActions();
@@ -56,4 +56,4 @@ const Index: FC = () => {
   )
 }
 
-export default Index;
+export default Navbar;

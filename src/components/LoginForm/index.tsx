@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import {
   AutoComplete,
   Button,
@@ -7,20 +7,19 @@ import {
 } from 'antd';
 import { rules } from '../../utils/rules';
 import { useTypedSelector, useActions } from '../../hooks';
+import { LoginFormValues } from './types';
 
-const Index: FC = () => {
+const LoginForm: FC = () => {
   const { login } = useActions();
   const { error, isLoading } = useTypedSelector((state => state.auth));
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
 
-  const submit = () => {
-    login({ username, password });
+  const submit = (values: LoginFormValues) => {
+    login({ ...values });
   };
 
   return (
     <Form
-      onFinish={submit}
+      onFinish={(values) => submit(values)}
     >
       {error && (<div style={{ color: 'red' }}>{ error }</div>)}
       <Form.Item
@@ -29,10 +28,7 @@ const Index: FC = () => {
         rules={[rules.required('Please input your username!')]}
       >
         <AutoComplete>
-          <Input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+          <Input />
         </AutoComplete>
         </Form.Item>
       <Form.Item
@@ -41,11 +37,7 @@ const Index: FC = () => {
         rules={[rules.required('Please input your password!')]}
       >
         <AutoComplete>
-          <Input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <Input type="password" />
         </AutoComplete>
       </Form.Item>
       <Form.Item>
@@ -57,4 +49,4 @@ const Index: FC = () => {
   )
 }
 
-export default Index;
+export default LoginForm;
