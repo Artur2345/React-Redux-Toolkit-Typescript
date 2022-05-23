@@ -1,5 +1,5 @@
-## Boilerplate - React | Typescript
-#### Redux || Redux-Toolkit || Redux-Thunk || React-Router
+## React | Typescript
+#### Redux || Redux-Toolkit || Redux-Thunk || React-Router || Ant Design
 
 ### Available Scripts
 
