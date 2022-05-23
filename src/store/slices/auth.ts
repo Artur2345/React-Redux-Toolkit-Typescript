@@ -1,7 +1,7 @@
 import { IUser } from '../../models/IUser';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IAuthState } from '../models/IAuthState';
-import axios from 'axios';
+import UserService from '../../api/UserService';
 
 const initialState: IAuthState = {
   isAuth: false,
@@ -28,6 +28,7 @@ const authSlice = createSlice({
     },
     logout: (state) => {
       state.isAuth = false;
+      state.user = {} as IUser;
       localStorage.removeItem('auth');
       localStorage.removeItem('username');
     }
@@ -53,9 +54,9 @@ const login = createAsyncThunk<
     { username: string; password: string; },
     { rejectValue: string }
   >(
-  'user/login',
+  'auth/login',
   async ({username, password}, thunkApi) => {
-    const response = await axios.get<Array<IUser>>('./users.json');
+    const response = await UserService.getUsers();
     const mockUser = response.data.find((user) => user.username === username);
 
     if (mockUser) {

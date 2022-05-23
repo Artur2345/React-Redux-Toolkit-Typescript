@@ -7,10 +7,10 @@ import {
   privateRoutes,
   publicRoutes,
   RouteNames,
-} from '../routes';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+} from '../../routes';
+import { useTypedSelector } from '../../hooks';
 
-const AppRouter = () => {
+const Index = () => {
   const { isAuth } = useTypedSelector((state) => state.auth);
 
   return (isAuth || localStorage.getItem('auth') ? (
@@ -45,4 +45,4 @@ const AppRouter = () => {
   )
 }
 
-export default AppRouter
+export default Index

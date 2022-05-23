@@ -1,9 +1,12 @@
 import { authReducer, authActions } from "./auth";
+import { eventReducer, eventActions } from './event';
 
 export const reducers = {
-  auth: authReducer
+  auth: authReducer,
+  event: eventReducer,
 };
 
-export const ActionCreators = {
-  ...authActions
-};
+export const allActionCreators = {
+  ...authActions,
+  ...eventActions
+}
